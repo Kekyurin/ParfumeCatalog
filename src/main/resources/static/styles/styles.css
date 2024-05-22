@@ -1,0 +1,22 @@
+.container {
+    padding-top: 50px;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    padding-left: 20px;
+    padding-right: 20px;
+    height: 50px;
+}
+
+.add-perfume {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.perfume-actions {
+    display: flex;
+    justify-content: space-around;
+}

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit perfume</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+    <link href="/styles/styles.css" rel="stylesheet" >
+</head>
+<body>
+<header th:replace="~{template :: navbar}" />
+<main>
+    <div class="container min-vh-100">
+        <div class="display-2">Edit perfume</div>
+        <form th:method="POST" th:action="@{/perfumes/edit/{id}(id=${originalPerfume.getId()})}" th:object="${newPerfumeData}" enctype="multipart/form-data">
+            <div class="mb-3">
+                <label for="name" class="form-label">Perfume name, current: <span th:text="${originalPerfume.getName()}"></span></label>
+                <input type="text" th:field="*{name}" id="name" class="form-control"/>
+            </div>
+            <div class="mb-3">
+                <label for="description" class="form-label">Perfume description, current: <span th:text="${originalPerfume.getDescription()}"></span></label>
+                <input type="text" th:field="*{description}" id="description" class="form-control"/>
+            </div>
+            <div class="form-group col">
+                <img src="" class="img-thumbnail" style="width: 18rem;"
+                     th:src="@{/perfume-pictures/{photoName}(photoName=${originalPerfume.getPerfumePictureName()})}" alt="">
+                <label for="newImage" class="form-label">New perfume image:
+                </label>
+                <input type="file" name="newImage" id="newImage" accept="image/jpeg" class="form-control-file">
+            </div>
+            <button type="submit" class="btn btn-primary col" style="margin-top: 10px">Update</button>
+        </form>
+    </div>
+</main>
+</body>
+</html>

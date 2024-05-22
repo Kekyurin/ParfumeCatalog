@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<header th:fragment="navbar">
+    <nav class="header navbar navbar-expand-lg navbar-light bg-light fixed-top">
+        <div>
+            <a class="navbar-brand" href="/perfumes">Fragrance shop</a>
+        </div>
+        <div style="display: flex; gap: 10px">
+            <div th:if="${userIsAdmin}">
+                <a class="nav-link" href="/register">Register</a>
+            </div>
+            <div>
+                <a class="nav-link" href="/login">Login</a>
+            </div>
+        </div>
+    </nav>
+</header>
+</body>
+</html>

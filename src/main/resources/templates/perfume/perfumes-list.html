@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Perfumes List</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+    <link href="/styles/styles.css" rel="stylesheet" >
+</head>
+<body>
+<header th:replace="~{template :: navbar}" />
+<main>
+    <div class="container min-vh-100">
+        <div class="row">
+            <div class="card mx-2 my-lg-4 p-3" th:each="perfume : ${existingPerfumes}" style="width: 18rem;">
+                <img src="" class="img-thumbnail"
+                     th:src="@{/perfume-pictures/{photoName}(photoName=${perfume.getPerfumePictureName()})}" alt="">
+                <div class="card-body">
+                    <h5 class="card-title" th:text="${perfume.getName()}">Name placeholder.</h5>
+                    <p class="card-text" th:text="${perfume.getDescription()}">Description placeholder.</p>
+                </div>
+                <div class="perfume-actions" th:if="${userIsAdmin}">
+                    <a class="btn btn-warning" href="#" th:href="@{/perfumes/edit/{id}(id=${perfume.getId()})}">Edit</a>
+                    <a class="btn btn-danger" href="#" th:href="@{/perfumes/delete/{id}(id=${perfume.getId()})}">Delete</a>
+                </div>
+            </div>
+            <div class="card mx-4 my-lg-4 p-3 add-perfume" style="width: 18rem;" th:if="${userIsAdmin}">
+                <a class="btn btn-primary" href="#" th:href="@{/perfumes/add}">Add perfume</a>
+            </div>
+        </div>
+    </div>
+</main>
+</body>
+</html>

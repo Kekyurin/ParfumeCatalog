@@ -1,0 +1,15 @@
+server:
+  port: 8082
+spring:
+  jpa:
+    open-in-view: false
+    hibernate:
+      ddl-auto: update
+  datasource:
+    url: jdbc:postgresql://${DB_ADDRESS}:5432/${DB_NAME}
+    username: ${DB_USERNAME}
+    password: ${DB_PASSWORD}
+application:
+  perfume-pictures:
+    upload-path: ${PERFUME_PICTURES_STORAGE_PATH}
+    allowed-extensions: image/jpeg

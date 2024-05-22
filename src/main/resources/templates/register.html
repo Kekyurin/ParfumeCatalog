@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Register</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+    <link href="/styles/styles.css" rel="stylesheet" >
+</head>
+<body>
+<header th:replace="~{template :: navbar}" />
+<main>
+    <div class="container min-vh-100">
+        <div class="display-2">Register</div>
+        <form th:method="POST" th:action="@{/register}" th:object="${user}">
+            <div class="mb-3">
+                <label for="email" class="form-label">Email</label>
+                <input type="text" th:field="*{email}" id="email" class="form-control"/>
+            </div>
+            <div class="mb-3">
+                <label for="password" class="form-label">Password</label>
+                <input type="password" th:field="*{password}" id="password" class="form-control"/>
+            </div>
+            <div class="mb-3">
+                <label for="passwordConfirmation" class="form-label">Password confirmation</label>
+                <input type="password" th:field="*{passwordConfirmation}" id="passwordConfirmation" class="form-control"/>
+            </div>
+            <button type="submit" class="btn btn-primary col">Register</button>
+        </form>
+    </div>
+</main>
+</body>
+</html>

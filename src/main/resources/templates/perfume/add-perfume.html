@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Add perfume</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+    <link href="/styles/styles.css" rel="stylesheet" >
+</head>
+<body>
+<header th:replace="~{template :: navbar}" />
+<main>
+    <div class="container min-vh-100">
+        <div class="display-2">Add perfume</div>
+        <form th:method="POST" th:action="@{/perfumes}" th:object="${perfume}" enctype="multipart/form-data">
+            <div class="mb-3">
+                <label for="name" class="form-label">Perfume name</label>
+                <input type="text" th:field="*{name}" id="name" class="form-control"/>
+            </div>
+            <div class="mb-3">
+                <label for="description" class="form-label">Perfume description</label>
+                <input type="text" th:field="*{description}" id="description" class="form-control"/>
+            </div>
+            <div class="form-group col">
+                <label for="perfume-image" class="form-label">Perfume image</label>
+                <input type="file" name="perfume-image" id="perfume-image" accept="image/jpeg" class="form-control-file">
+            </div>
+            <button type="submit" class="btn btn-primary col">Save</button>
+        </form>
+    </div>
+</main>
+</body>
+</html>
